@@ -8,9 +8,6 @@ Warlock::Warlock(const std::string &name, const std::string &title) : name(name)
 Warlock::~Warlock()
 {
 	std::cout << name << ": My job here is done!\n";
-	for (SpellMap::iterator it = arr.begin(); it != arr.end(); it++)
-		delete it->second;
-	this->arr.clear();
 }
 
 const std::string &Warlock::getName() const
@@ -35,22 +32,17 @@ void Warlock::introduce() const
 
 void Warlock::learnSpell(ASpell *spell)
 {
-	if (!spell)
-		return;
-	arr.insert(std::make_pair(spell->getName(), spell->clone()));
+	book.learnSpell(spell);
 }
 
 void Warlock::forgetSpell(std::string spell_name)
 {
-	if (arr.find(spell_name) == arr.end())
-		return;
-	delete arr.at(spell_name);
-	arr.erase(spell_name);
+	book.forgetSpell(spell_name);
 }
 
 void Warlock::launchSpell(std::string spell_name, ATarget const &target)
 {
-	if (arr.find(spell_name) == arr.end())
+	if (!book.createSpell(spell_name)) 
 		return;
-	arr.at(spell_name)->launch(target);
+	book.createSpell(spell_name)->launch(target);
 }

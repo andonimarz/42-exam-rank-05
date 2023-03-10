@@ -3,6 +3,7 @@
 #include <map>
 #include "ASpell.hpp"
 #include "ATarget.hpp"
+#include "SpellBook.hpp"
 
 typedef std::map<std::string, ASpell *> SpellMap;
 
@@ -11,7 +12,7 @@ class Warlock
 	private:
 		std::string name;
 		std::string title;
-		SpellMap arr;
+		SpellBook book;
 
 		Warlock();
 		Warlock(const Warlock &other);

@@ -11,19 +11,14 @@ private:
 	std::string effects;
 
 public:
-	ASpell(){};
-	ASpell(const ASpell &ref) : name(ref.name), effects(ref.effects){};
-	ASpell &operator=(const ASpell &ref)
-	{
-		name = ref.name;
-		effects = ref.effects;
-		return *this;
-	};
-	ASpell(const std::string &name, const std::string &effects) : name(name), effects(effects) {}
-	virtual ~ASpell(){};
+	ASpell();
+	ASpell(const ASpell &ref);
+	ASpell &operator=(const ASpell &ref);
+	ASpell(const std::string &name, const std::string &effects);
+	virtual ~ASpell();
 
-	const std::string &getName() const { return name; };
-	const std::string &getEffects() const { return effects; };
+	const std::string &getName() const;
+	const std::string &getEffects() const;
 
 	void launch(const ATarget &target) const;
 

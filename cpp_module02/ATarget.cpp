@@ -1,6 +1,6 @@
 #include "ATarget.hpp"
 
-ATarget::ATarget(){}
+ATarget::ATarget() {}
 
 ATarget::ATarget(const ATarget &ref) : type(ref.type) {}
 
